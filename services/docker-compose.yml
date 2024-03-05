@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Timescale database service
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5436:5432"
+    volumes:
+      - ../data/pgdata:/var/lib/postgresql/data
+    networks:
+      - mimicon
+
+networks:
+  mimicon:
